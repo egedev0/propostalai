@@ -1,205 +1,173 @@
 # ProposalAI 🚀
 
-AI destekli freelance teklif oluşturma platformu. Freelancerların daha hızlı ve etkili teklifler hazırlamasına yardımcı olur.
+> **AI-powered freelance proposal generator** - Create winning proposals in seconds with GPT technology
 
-## 🎯 Özellikler
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js)](https://nextjs.org/)
+[![Go](https://img.shields.io/badge/Go-1.24-00ADD8?logo=go)](https://golang.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
 
-- **AI Destekli Teklif Oluşturma**: GPT tabanlı akıllı teklif üretimi
-- **Kişiselleştirme**: İş ilanı ve profil bilgilerinize özel içerik
+ProposalAI, freelancerların daha hızlı ve etkili teklifler hazırlamasına yardımcı olan AI destekli bir platformdur. İş ilanı ve profil bilgilerinizi girin, yapay zeka size özel profesyonel teklifler oluştursun!
+
+## ✨ Özellikler
+
+### 🤖 AI Destekli Teklif Oluşturma
+- **GPT-4 Teknolojisi**: İş ilanına özel, kişiselleştirilmiş teklifler
 - **Farklı Tonlar**: Profesyonel, samimi, teknik, yaratıcı, resmi
 - **Hızlı Sonuç**: Saniyeler içinde hazır teklif
-- **Modern UI**: shadcn/ui ile oluşturulmuş responsive tasarım
-- **Güvenli Backend**: Go ile yüksek performanslı API
+- **Akıllı Analiz**: İş gereksinimlerini otomatik analiz
+
+### 👤 Kullanıcı Yönetimi
+- **Güvenli Authentication**: E-posta/şifre ile kayıt ve giriş
+- **Social Login**: Apple, Google, Facebook ile tek tıkla giriş
+- **Kullanıcı Paneli**: Geçmiş teklifler ve istatistikler
+- **Profil Yönetimi**: Kişisel bilgi ve yetenek düzenleme
+
+### 💎 Abonelik Sistemi
+- **Ücretsiz Plan**: Aylık 5 teklif
+- **Pro Plan**: Aylık 50 teklif + premium özellikler
+- **Premium Plan**: Sınırsız teklif + API erişimi
+
+### 🎨 Modern UI/UX
+- **Responsive Design**: Mobil uyumlu tasarım
+- **shadcn/ui Components**: Modern ve accessible bileşenler
+- **Tailwind CSS**: Hızlı ve tutarlı styling
+- **Loading States**: Smooth kullanıcı deneyimi
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **Next.js 14** - React framework (App Router)
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Styling
-- **shadcn/ui** - UI components
-- **React Hook Form** - Form management
+- **[Next.js 14](https://nextjs.org/)** - React framework (App Router)
+- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS
+- **[shadcn/ui](https://ui.shadcn.com/)** - Beautiful UI components
+- **[React Hook Form](https://react-hook-form.com/)** - Form validation
 
 ### Backend
-- **Go** - High-performance API server
-- **Gin** - Web framework
-- **GORM** - ORM for database operations
-- **PostgreSQL** - Database
-- **OpenAI API** - AI text generation
+- **[Go](https://golang.org/)** - High-performance API server
+- **[Gin](https://gin-gonic.com/)** - HTTP web framework
+- **[GORM](https://gorm.io/)** - ORM for database operations
+- **[JWT](https://jwt.io/)** - Authentication tokens
+
+### Database & Deployment
+- **[PostgreSQL](https://postgresql.org/)** - Primary database
+- **[Vercel](https://vercel.com/)** - Frontend deployment
+- **[Railway](https://railway.app/)** - Backend deployment
 
 ## 🚀 Hızlı Başlangıç
 
 ### Gereksinimler
 - Node.js 18+
-- Go 1.21+
-- PostgreSQL 14+
-- OpenAI API key
+- Go 1.24+
+- PostgreSQL (opsiyonel, development için)
 
 ### Kurulum
 
 1. **Repository'yi klonlayın**
 ```bash
-git clone https://github.com/yourusername/propostalai.git
+git clone https://github.com/egedev0/propostalai.git
 cd propostalai
 ```
 
 2. **Frontend kurulumu**
 ```bash
-# Dependencies yükle
 npm install
-
-# Environment dosyasını oluştur
 cp env.example .env.local
-# .env.local dosyasını düzenleyip API key'lerinizi ekleyin
+# .env.local dosyasını düzenleyin
 ```
 
 3. **Backend kurulumu**
 ```bash
 cd backend
-
-# Go dependencies yükle
 go mod tidy
-
-# Environment dosyasını oluştur
 cp env.example .env
-# .env dosyasını düzenleyip database ve API bilgilerinizi ekleyin
+# .env dosyasını düzenleyin
 ```
 
-4. **Database kurulumu**
+4. **Development serverları başlatın**
+
+**Seçenek 1: Ayrı terminal'lerde**
 ```bash
-# PostgreSQL database oluştur
-createdb propostalai
+# Terminal 1 - Backend
+cd backend && go run cmd/api/main.go
 
-# Migration'ları çalıştır (gelecekte eklenecek)
-# go run cmd/migrate/main.go
-```
-
-### Geliştirme Sunucularını Başlatma
-
-1. **Backend sunucusu** (Terminal 1)
-```bash
-cd backend
-go run cmd/api/main.go
-```
-
-2. **Frontend sunucusu** (Terminal 2)
-```bash
+# Terminal 2 - Frontend  
 npm run dev
 ```
 
-Uygulama şu adreslerde çalışacak:
+**Seçenek 2: Tek komutla**
+```bash
+npm run dev:full
+```
+
+5. **Tarayıcıda açın**
 - Frontend: http://localhost:3000
 - Backend API: http://localhost:8080
 
-## 📁 Proje Yapısı
+## 📝 API Endpoints
 
+### Authentication
 ```
-propostalai/
-├── src/                    # Next.js frontend
-│   ├── app/               # App router pages
-│   ├── components/        # React components
-│   │   └── ui/           # shadcn/ui components
-│   └── lib/              # Utilities
-├── backend/               # Go backend
-│   ├── cmd/              # Main applications
-│   ├── internal/         # Private code
-│   │   ├── handlers/     # HTTP handlers
-│   │   ├── models/       # Database models
-│   │   └── services/     # Business logic
-│   └── pkg/              # Public packages
-└── docs/                 # Documentation
+POST /api/v1/auth/register     # Kullanıcı kaydı
+POST /api/v1/auth/login        # Kullanıcı girişi
+POST /api/v1/auth/social       # Social login (Apple, Google, Facebook)
+POST /api/v1/auth/refresh      # Token yenileme
+POST /api/v1/auth/logout       # Çıkış
 ```
-
-## 🔗 API Endpoints
-
-### Proposal Generation
-- `POST /api/v1/proposals/generate` - Yeni teklif oluştur
-- `GET /api/v1/proposals` - Kullanıcının tekliflerini listele
-- `GET /api/v1/proposals/:id` - Belirli teklifi getir
-- `PUT /api/v1/proposals/:id` - Teklifi güncelle
-- `DELETE /api/v1/proposals/:id` - Teklifi sil
 
 ### User Management
-- `POST /api/v1/users/register` - Kullanıcı kaydı
-- `POST /api/v1/users/login` - Kullanıcı girişi
-- `GET /api/v1/users/profile` - Profil bilgileri
-- `PUT /api/v1/users/profile` - Profil güncelle
-
-### Health Check
-- `GET /health` - Sunucu durumu
-- `GET /api/v1/ping` - API durumu
-
-## 🎨 UI Components
-
-Proje shadcn/ui kullanarak modern ve accessible UI componentleri içerir:
-
-- `Button` - Çeşitli stillerde butonlar
-- `Card` - İçerik kartları
-- `Input` & `Textarea` - Form elemanları
-- `Select` - Dropdown seçiciler
-- `Alert` - Bilgilendirme mesajları
-- `Badge` - Etiketler
-- `Dialog` - Modal pencereler
-
-## 🔧 Geliştirme
-
-### Yeni Özellik Ekleme
-
-1. Backend'e yeni endpoint eklemek:
-```bash
-# Handler oluştur
-touch backend/internal/handlers/new_feature.go
-
-# Route'u main.go'ya ekle
-# Service logic'i internal/services/'e ekle
+```
+GET  /api/v1/profile           # Kullanıcı profili
+PUT  /api/v1/profile           # Profil güncelleme
 ```
 
-2. Frontend'e yeni sayfa eklemek:
-```bash
-# Yeni sayfa oluştur
-mkdir src/app/new-page
-touch src/app/new-page/page.tsx
+### Proposals (Coming Soon)
+```
+GET  /api/v1/proposals         # Kullanıcı teklifleri
+POST /api/v1/proposals         # Yeni teklif oluştur
+GET  /api/v1/proposals/:id     # Teklif detayı
+PUT  /api/v1/proposals/:id     # Teklif güncelle
 ```
 
-### Code Style
+## 🎯 Kullanım
 
-- **Frontend**: Prettier + ESLint
-- **Backend**: gofmt + golint
-- **Commit**: Conventional commits
+1. **Hesap Oluşturun**: E-posta ile kayıt olun veya social login kullanın
+2. **Profil Bilgilerinizi Girin**: Yeteneklerinizi ve deneyiminizi ekleyin
+3. **İş İlanını Yapıştırın**: Başvurmak istediğiniz işin detaylarını girin
+4. **Tonu Seçin**: Profesyonel, samimi, teknik vb.
+5. **AI Teklif Oluştursun**: Saniyeler içinde kişiselleştirilmiş teklif alın
+6. **Düzenleyin ve Kullanın**: Teklifinizi gerektiği gibi düzenleyin
 
-```bash
-# Frontend linting
-npm run lint
+## 📊 Proje Durumu
 
-# Backend formatting
-go fmt ./...
-```
+- ✅ **Tamamlanan Özellikler**
+  - [x] Next.js frontend kurulumu
+  - [x] Go backend API
+  - [x] Kullanıcı authentication sistemi
+  - [x] Apple, Google, Facebook social login UI
+  - [x] Kullanıcı dashboard'u
+  - [x] Responsive tasarım
+  - [x] Modern UI components
 
-## 📦 Production Build
+- 🚧 **Geliştirme Aşamasında**
+  - [ ] OpenAI GPT entegrasyonu
+  - [ ] Gerçek social login implementasyonu
+  - [ ] PostgreSQL database bağlantısı
+  - [ ] JWT token yönetimi
+  - [ ] E-posta doğrulama
 
-### Frontend
-```bash
-npm run build
-npm start
-```
-
-### Backend
-```bash
-cd backend
-go build -o bin/api cmd/api/main.go
-./bin/api
-```
-
-### Docker (Gelecekte eklenecek)
-```bash
-docker-compose up --build
-```
+- 📋 **Planlanan Özellikler**
+  - [ ] Teklif şablonları
+  - [ ] Analitik ve raporlama
+  - [ ] Çoklu dil desteği
+  - [ ] API rate limiting
+  - [ ] Ödeme sistemi entegrasyonu
 
 ## 🤝 Katkıda Bulunma
 
 1. Fork edin
 2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
-3. Commit edin (`git commit -m 'feat: add amazing feature'`)
+3. Commit edin (`git commit -m 'Add some amazing feature'`)
 4. Push edin (`git push origin feature/amazing-feature`)
 5. Pull Request açın
 
@@ -207,24 +175,20 @@ docker-compose up --build
 
 Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
-## 🙋‍♂️ Destek
+## 🔗 Bağlantılar
 
-Sorularınız için:
-- Issue açın
-- Email: support@proposalai.com
-- Discord: [ProposalAI Community](https://discord.gg/proposalai)
+- **Demo**: [https://propostalai.vercel.app](https://propostalai.vercel.app) (Coming Soon)
+- **API Docs**: [https://api.propostalai.com/docs](https://api.propostalai.com/docs) (Coming Soon)
+- **Discord**: [Community Discord](https://discord.gg/propostalai) (Coming Soon)
 
-## 🗺️ Roadmap
+## 👨‍💻 Geliştirici
 
-- [ ] OpenAI API entegrasyonu
-- [ ] Kullanıcı authentication
-- [ ] Database migration'ları
-- [ ] Email notifications
-- [ ] Template sistemi
-- [ ] Analytics dashboard
-- [ ] Mobile app
-- [ ] Multi-language support
+**Ege Dev**
+- GitHub: [@egedev0](https://github.com/egedev0)
+- Twitter: [@egedev0](https://twitter.com/egedev0)
 
 ---
 
-Made with ❤️ by ProposalAI Team
+⭐ Bu projeyi beğendiyseniz yıldız vermeyi unutmayın!
+
+**Made with ❤️ in Turkey**
